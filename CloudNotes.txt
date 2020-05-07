@@ -1,0 +1,1712 @@
+Before start chat : 
+
+https://support.cloudways.com/getting-started-with-cloudways/
+f
+
+
+Switch user:
+==============================================
+for user in $(cat /etc/passwd | grep master | awk -F : '{print $1}')    ``; do su $user; done
+for user in $(cat /etc/passwd | awk -F : '{print $1}' | grep master); do chown -R $user:www-data * ; done
+for user in $( cat test.txt); do tail -f $user/logs/nginx-app.status.log | grep "status_code:503" ; done
+Restart Services:
+==============================================
+/etc/init.d/
+
+2 restart
+/etc/init.d/memcached restart
+/etc/init.d/varnish restart
+/etc/init.d/mysql restart
+/etc/init.d/nginx restart
+/etc/init.d/php5-fpm restart
+/etc/init.d/php7.0-fpm restart
+ /etc/init.d/php7.1-fpm restart
+Status Services:
+==============================================
+/etc/init.d/apache2 status
+/etc/init.d/memcached status
+/etc/init.d/varnish status
+/etc/init.d/mysql status
+/etc/init.d/nginx status
+/etc/init.d/php5-fpm status
+/etc/init.d/php7.0-fpm status
+Logs
+=============================================   
+awk '{print $4}' | cut -d: -f1-2| uniq -c
+cut -f 1 -d ' '|sort|uniq -c|sort -nr|more
+cat /var/log/syslog | grep crashed | cut -f12 -d ' '
+Magento Versions
+=============================================Ftra
+php bin/magento --version
+php -r "require 'app/Mage.php'; echo Mage::getVersion(); "
+Search and Replace  
+=============================================
+grep -lr -e 'woocommerce-360035-1125435.cloudwaysapps.com' * | xargs sed -i 's/woocommerce-360035-1125435.cloudwaysapps.com/africanfashion4u.com/g'
+
+
+
+
+
+inkopsradet.se\
+Database Optimization
+=============================================
+
+SELECT CEILING(Total_InnoDB_Bytes*1.6/POWER(1024,3)) RIBPS FROM
+(SELECT SUM(data_length+index_length) Total_InnoDB_Bytes
+FROM information_schema.tables WHERE engine='InnoDB') A;
+wait_timeout
+interactive_timeout
+query_cache_type
+join_buffer_size
+
+
+Lets encrypt
+
+=============================================
+/usr/local/bin/letsencrypt-auto --dry-run certonly --webroot -w /home/master/applications/ujtbqzkqax/public_html --agree-tos -d marketingavatars.com 
+WP-user create CLI
+
+
+
+
+=============================================
+for user in $(cat /etc/passwd | grep master | awk -F : '{print $1}'); do su $user; done
+wp user create testy test1@test.com --role=administrator --allow-root > ../tmp/userpass.txt
+cat ../tmp/userpass.txt
+    `
+wp user update siang1 siang@ewavesfb.com --user_pass=Testing123
+Mysql User
+=============================================
+create database txjnf
+zxx;
+CREATE USER 'fmjqnuayfh'@'localhost' IDENTIFIED BY 'test1234';
+GRANT ALL PRIVILEGES ON  fmjqnuayfh.* TO 'fmjqnuayfh'@'localhost';
+ sed -i '/server_name_in_redirect/a include "/etc/nginx/backends_502";' *
+ 
+ iostat -xdk 1 25
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++
+ IPv4 regex
+ 
+ grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'
+ 
+ +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ Number of connection on port 80/443
+netstat -tn 2>/dev/null | grep :80 | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -nr | head
+  htop
+ss -at | grep -v "^LISTEN" | grep -E :http? | awk '{print $5}' | cut -d":" -f1 | sort | uniq -c | sort -nr
+ 
+ ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+To find My IP 
+dig +short myip.opendns.com @resolver1.opendns.com
+Or 
+dig TXT +short o-o.myaddr.l.google.com @ns1.google.com
++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+ 
+ 
+ for A in $(ls | awk '{print $NF}'); do du -sh $A && cat $A/conf/server.nginx | grep server_name | grep -v Domain_alias | awk -F";" '{print $1}' ; done
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+INSERT INTO mysql.user 
+SET user = 'root', 
+    host = 'localhost', 
+    password = Password('VhRMBBxtECYZk8T'), 
+    Select_priv = 'y',
+    Insert_priv = 'y',
+    Update_priv = 'y',
+    Delete_priv = 'y',
+    Create_priv = 'y',
+    Drop_priv = 'y',
+    Reload_priv = 'y',
+    Shutdown_priv = 'y',
+    Process_priv = 'y',
+    File_priv = 'y',
+    Grant_priv = 'y',
+    References_priv = 'y',
+    Index_priv = 'y',
+    Alter_priv = 'y',
+    Show_db_priv = 'y',
+    Super_priv = 'y',
+    Create_tmp_table_priv = 'y',
+    Lock_tables_priv = 'y',
+    Execute_priv = 'y',
+    Repl_slave_priv = 'y',
+    Repl_client_priv = 'y',
+    Create_view_priv = 'y',
+    Show_view_priv = 'y',
+    Create_routine_priv = 'y',
+    Alter_routine_priv = 'y',
+    Create_user_priv = 'y',
+    Event_priv = 'y',
+    Trigger_priv = 'y',
+    Create_tablespace_priv = 'y';
+     // Enable WP_DEBUG mode
+define( 'WP_DEBUG', true );
+// Enable Debug logging to the /wp-content/debug.log file
+define( 'WP_DEBUG_LOG', true );
+// Disable display of errors and warnings 
+define( 'WP_DEBUG_DISPLAY', false );
+@ini_set( 'display_errors', 0 );
+// Use dev versions of core JS and CSS files (only needed if you are modifying these core files)
+define( 'SCRIPT_DEBUG', true );
+cd /etc/nginx/sites-available
+sed -i 's/error_page 502 = @backend/error_page 502 503 = @backend_502/g' *
+sed -i '/server_name_in_redirect/a include "/etc/nginx/backends_502";' *
+vim /etc/nginx/backends_502
+location @backend_502 {
+     if ($http_host ~* (.*\.cloudwaysapps.com)) {
+            add_header  X-Robots-Tag "noindex, nofollow" always;
+     }
+            include /etc/nginx/nginx_proxy_params;
+            error_log off;
+            proxy_set_header X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            proxy_set_header Host $host;
+            proxy_pass http://ngx_backends_502;
+            proxy_set_header X-Forwarded-Proto $real_scheme;
+            proxy_set_header X-Forwarded-Host $http_host;
+        }
+        
+        
+        
+upstream ngx_backends_502{
+server 127.0.0.1:8081;
+}
+cp /etc/php/7.1/mods-available/igbinary.ini   /etc/php/7.2/mods-available/
+cp /etc/php/7.1/mods-available/msgpack.ini /etc/php/7.2/mods-available/
+cp /etc/php/7.1/mods-available/xdebug.ini /etc/php/7.2/mods-available/
+cd /etc/php/7.2/fpm/conf.d
+ln -s /etc/php/7.2/mods-available/igbinary.ini 20-igbinary.ini
+ln -s /etc/php/7.2/mods-available/msgpack.ini 20-msgpack.ini
+ln -s /etc/php/7.2/mods-available/xdebug.ini 20-xdebug.ini
+cd /etc/php/7.2/cli/conf.d
+ln -s /etc/php/7.2/mods-available/msgpack.ini 20-msgpack.ini
+ln -s /etc/php/7.2/mods-available/igbinary.ini 20-igbinary.ini
+ln -s /etc/php/7.2/mods-available/xdebug.ini 20-xdebug.ini
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+curl -s https://raw.githubusercontent.com/ahmedeasypeasy/Scripts/master/back-ends.sh?23234323423 | bash
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+======================================================
+
+Purge script Application wise , for Varnish.
+
+1- create a .php file under the public_html name it as per your choice. For e.g purge.php.
+<?php
+$test1=$_SERVER['HTTP_HOST'];
+shell_exec("/usr/bin/varnishadm -S /home/master/applications/rrcmegkdug/public_html/secret -T localhost:6082 ban req.http.host == $test1");
+?>
+2- create a non-extension file name as a secret and paste the following string inside it. No inverted commas, please.
+"f6e54aad-acbe-4980-9ac1-37decbaa3d77"
+
+3- Define the path of the secret as per your applications and it's location.
+
+4- Try accessing your site as abc.com/purge.php
+
+5- Perform above steps for a couple of your applications.
+
+
+
+=========================================================================================
+
+
+___________________________________________________________________
+# Use X-Forwarded-For HTTP Header to Get Visitor's Real IP Address
+ 
+if ( isset( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+    $http_x_headers = explode( ',', $_SERVER['HTTP_X_FORWARDED_FOR'] );
+    $_SERVER['REMOTE_ADDR'] = $http_x_headers[0];
+}
++++++++++++++++++++++++++++++++++++++++++++++++++
+
+#if ( array_key_exists( 'HTTP_CF_CONNECTING_IP', $_SERVER ) ) {
+#    $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_CF_CONNECTING_IP'];
+#}
+if ( array_key_exists( 'HTTP_CF_CONNECTING_IP', $_SERVER ) ) {
+   $_SERVER['HTTP_X_REAL_IP'] = $_SERVER['HTTP_CF_CONNECTING_IP'];
+}
++++++++++++++++++++++++++++++++++++++++++++++
+
+
+for A in $(ls | awk '{print $NF}'); do echo $A && cat $A/logs/apache_*.access.log | cut -f 1 -d ' '|sort|uniq -c|sort -nr| head -n 15 | awk -F";" '{print $1}' ; done
+for A in $(ls | awk '{print $NF}'); do echo $A && cat $A/logs/apache_*.access.log| cut -f 7 -d ' '|sort|uniq -c|sort -nr| head -n 15 ; done
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Check magento version 
+php -r "require 'app/Mage.php'; echo Mage::getVersion(); "
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+restore deleted Apps
+/var/cw/scripts/bash/duplicity_restore.sh --src pyztubvpgu -c
+/var/cw/scripts/bash/duplicity_restore.sh --src pyztubvpgu -r --dst '/home/master/applications/sfzjnwvemv/tmp' --time '2019-04-15'
+/var/cw/scripts/bash/duplicity_restore.sh --src vvwbwkatne -r --dst '/home/master/applications/vvwbwkatne/tmp' --time '2019-02-25T15:01:56"
+/var/lib/logrotate/status  | grep applicationid
+cat /var/log/syslog | grep -i delete
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+lets encrypt dry run
+/usr/local/bin/letsencrypt-auto certonly --webroot -w /home/204089.cloudwaysapps.com/ugnbmewqqs/public_html --agree-tos -d www.tastytrip.com -d tastytrip.com  --dry-run
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Check application traffic
+for A in $(ls -l /home/master/applications/| grep "^d" | awk '{print $NF}'); do echo $A && awk '{print $1,$7}' /home/master/applications/$A/logs/apache_*.access.log | cut -d? -f1 | sort | uniq -c |sort -nr | head -n 5 | awk -F";" '{print $1}' ; done
+
+/home/257689.cloudwaysapps.com/wgpackamvn/public_html/wp-includes/wp-db.php
+
+Analyze REAL TIME traffic neatly:
+
+commands:
+
+tailf access_log_file_path | awk '{ printf("%-15s\t%s\t%s\t%s\t%s\t\n", "IP = "$1, "Req-Type = "$6, $9, $7, "UserAgent == " $14)}'
+
+If a customer does not know how to read logs, simply give this one to him.:
+
+tailf access_log_file_path | awk '{ printf("%-15s\t%s\t%s\t\t%s\t%s\n", "IP = "$1, "Status_code = "$9, "Req-typ = "$6, "URL = "$7, "UserAgent == " $14)}'
+
+
+          
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+# vim /etc/postfix/main.cf
+smtp_generic_maps = hash:/var/cw/systeam/generic
+# vim /var/cw/systeam/generic
+tom-01@server01.hosting.com     tom@domain.com
+# postmap /var/cw/systeam/generic
+# /etc/init.d/postfix restart
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+MySQL python package
+cloudways.saad [10:46 PM]
+apt-get install -y libmariadbclient18
+apt-get remove -y libmariadb3
+apt-get install -y python-mysqldb
+ ```root@257508:~# cd /usr/lib/x86_64-linux-gnu
+root@257508:/usr/lib/x86_64-linux-gnu# ls -l libmysqlclient.so.18
+lrwxrwxrwx 1 root root 15 Feb 20 11:13 libmysqlclient.so.18 -> libmariadb.so.3```
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+magento 
+
+<?php
+$servername = "localhost";
+$username = "fsvuphkpwz";
+$password = "g6BF9G7cXw";
+$dbname = "fsvuphkpwz";
+error_reporting(0);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+   die("Connection failed: " . $conn->connect_error);
+}
+$sql = "DELETE FROM 
+_schedule WHERE created_at < DATE_SUB(NOW(), INTERVAL 1 HOUR)";
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+   // output data of each row
+   while($row = $result->fetch_assoc()) {
+       echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+   }
+} else {
+   echo "0 results";
+}
+$conn->close();
+?>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+++++++++++++++++++++++++++++++++++
+Redirect
+RewriteCond %{HTTP_HOST} ^acrossinternational\.cwa\.dotcomweavers\.net [NC,OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://www.acrossinternational.cwa.dotcomweavers.net/$1 [R=301,L]
++++++++++++++++++++++++++++++++++++++++
+Append to next line (search/replace)
+sed -i  '/pm.max_children/a pm.max_requests = 200' *
++++++++++++++++++++++++++++++++++++++++
+Fix broken symlink
+find -L . -type l -printf "ln -sf %l %h/%f\n" | sed  's#87442.cloudwaysapps.com#103969.cloudwaysapps.com#g' | sh
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+DB search replace
+https://github.com/interconnectit/Search-Replace-DB/archive/master.zip
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Broken Symlinks
+  find . -type l -exec sh -c 'file -b "$1" | grep -q ^broken' sh {} \; -print
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Cloudflare Real IP
+LogFormat "%{CF-Connecting-IP}i %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" cloudflare
++...
+
+
+
+WordPress Notes:
+
+Cron Settings for Wordpress
+
+#vi wp-config.php
+define('DISABLE_WP_CRON', true);
+ from within worpress public html directory
+#wp cron event list
+#Wp cron test
+
+Now set the cron from Cron options from UI
+*/5 * * * * wget -q -O - https://sangchaigroup.com/wp-cron.php?doing_wp_cron
+
+
+
+
+
+--------------
+
+Backup and Restore DB
+try gunzip if tar is not working 
+
+Restore
+#mysql -uroot -ppassword rhce_newdatabase_name < /root/filename.sql
+
+
+Backup
+# mysqldump -uroot -ppassword rhce > rhce.sql
+
+
+Website IP History
+https://viewdns.info/iphistory/?domain=educatorhome.com
+
+
+Top 100 IPs accessing the link with /recognition in last 30 days:
+cat logs.txt | grep "/recognition" | cut -f 1 -d ' '|sort|uniq -c|sort -nr| head -n 100 | awk -F";" '{print $1}'
+
+Active sftp connections
+ps -ef|grep ftp
+https://www.abuseipdb.com/check/117.216.226.16
+
+
+inodes cron. magento
+0 4 * * * find home/121026.cloudwaysapps.com/qjehhuydbj/public_html/var/session/ -type f -mtime +10 -delete   > /dev/null 2>&1
+
+inodes checking 
+for D in *; do echo $D; find $D -type f| wc -l; done
+
+
+INODES Issue:
+
+Wordpress inodes issues: 
+
+Remove evernything under 
+
+rm -rf sessions/php7/*
+
+
+Magento:
+public_html/var/sessions
+
+
+Drupal : 
+ public_html/cache.
+ 
+ 
+ Joomla:
+ 
+  public_html/cache
+  
+
+
+/home/sessions/php7/sessions
+
+
+
+Disable xmlrpc
+inside .htacces
+
+<Files xmlrpc.php>
+order deny,allow
+deny from all
+allow from xxx.xxx.xxx.xxx
+</Files>
+
+
+SSL Certficate File Location
+root@355985:/etc/nginx# cat ssl/xvzyqcngbe 
+        listen 443 ssl http2;
+        ssl_certificate     /home/355985.cloudwaysapps.com/xvzyqcngbe/ssl/server.crt;
+        ssl_certificate_key /home/355985.cloudwaysapps.com/xvzyqcngbe/ssl/server.key;
+        ssl_protocols TLSv1.2  TLSv1.3;
+        ssl_verify_depth 1;
+        ssl_ciphers "EECDH+ECDSA+AESGCM EECDH+aRSA+AESGCM EECDH+ECDSA+SHA384 EECDH+ECDSA+SHA256 EECDH+aRSA+SHA384 EECDH+aRSA+SHA256 EECDH+aRSA+RC4 EECDH EDH+aRSA RC4 !aNULL !eNULL !LOW !3DES !MD5 !EXP !PSK !SRP !DSS !RC4";
+        ssl_prefer_server_ciphers on;
+        ssl_dhparam /etc/ssl/certs/dhparam.pem;
+root@355985:/etc/nginx#
+
+
+SSL Checking 
+https://www.sslshopper.com/ssl-checker.html
+
+SSL Certificate checking 
+https://www.sslshopper.com/ssl-certificate-tools.html
+
+
+Wordpress Mails.
+
+WP Mail SMTP Plugin
+ 
+---- cloudflar issue,
+
+get the server ip and test the website with /etc/hosts entry
+
+
+TroubleShooting Tips:
+1: Clear Browser Cache or Use Private Mode (depends on cases)
+2: Check the website with /etc/hosts incase of issue from cloudflare
+
+
+Wordpress returning to default cloudways url 
+================================
+
+open  under public_html . wp-config.php , check for the lines and comment out if any
+
+#define('WP_SITEURL', 'https://wordpress-371787-1162618.cloudwaysapps.com');
+#define('WP_HOME', 'https://wordpress-371787-1162618.cloudwaysapps.com');
+
+===============================
+
+
+WordPress Mix content:
+
+
+check on   
+https://www.jitbit.com/sslcheck/
+https://www.whynopadlock.com/results/a274cef5-6615-4b93-8129-2d64a539ee4a
+
+Either remove all urls from db  starting with http or use this KB
+
+https://support.cloudways.com/fix-mixed-content-issue-wordpress/?utm_source=Platformkb&utm_medium=kbsearch
+
+
+
+
+
+Speedup Wordpress Website ( or general )
+
+
+time to first byte (TTFB)
+Use CDN e.g. Cloudflar
+Use caching either from hosting or from wp plugins
+optimize images - resize images ( using wp plugins )  - try using AWS s3 to store images
+reduce redirects
+
+
+elastic email ( dkim, dmarc records )
+
+https://help.elasticemail.com/en/articles/2303914-spf-dkim-and-tracking-faq
+https://elasticemail.com/dmarc
+
+
+UTC to EST Convertor
+
+
+https://www.worldtimebuddy.com/est-to-utc-converter
+
+
+----------------
+Lets Encrypt not renewing automatically
+wordpress da
+
+Add these into .htaccess
+
+RewriteEngine On
+RewriteRule ^.well-known/acme-challenge - [L]
+
+- [L]  = means no further rule will processed . It will stop here .
+[B] =   The [B] flag instructs RewriteRule to escape non-alphanumeric characters before applying the transformation.
+[B=#?;] = you can also list characters 
+ Given a search term of 'x & y/z' ,  browser will  display the url as    ==  'x%20%26%20y%2Fz'
+ C|chain = this is the chain to the next rule.  if rules matches all upcoming rules will be processed .  If rules does not match all next chain rules will be skipped.
+ 
+ The [C] or [chain] flag indicates that the RewriteRule is chained to the next rule. That is, if the rule matches,
+ then it is processed as usual and control moves on to the next rule. However, if it does not match, then the next rule, and any other rules that are chained together, are skipped
+ 
+ CO|cookie  .  Allows your to set cookies.
+ 
+ Full syntax: 
+ [CO=NAME:VALUE:DOMAIN:lifetime:path:secure:httponly] 
+ 
+ Also 
+ 
+ [CO=;NAME;VALUE:MOREVALUE;DOMAIN;lifetime;path;secure;httponly] 
+ 
+ 
+ [NC] flag   = Case insensitive search 
+ 
+ htaccess flags:
+ https://httpd.apache.org/docs/2.4/rewrite/flags.html
+ 
+ 
+
+
+------------------
+
+
+cloudways notes
+
+https://cloudways.ml/po/docs/postfix/
+-------
+
+Staggin app  redirecting to Live site. 
+Redirection may be due to succuri or cloudflare as well . check it with /etc/hosts as well .. may be both steps are required0
+
+URL appearing with default domain name in css files  ( this step with search within all files )  - Before this step take backup of all files under home folder .
+
+grep -lr -e 'wordpress-349270-1186543.cloudwaysapps.com' * | xargs sed -i 's/wordpress-349270-1186543.cloudwaysapps.com/mrwyn.com/g'
+
+
+ grep -lr -e 'https://staging.agcofuturefarm.com/'  *  | xargs sed -i 's/staging.agcofuturefarm.com//https://agcofuturefarm.com//g'
+ 
+ 
+  grep -lr -e 'staging.agcofuturefarm.com'  *  | xargs sed -i 's/staging.agcofuturefarm.com/agcofuturefarm.com/g'
+
+ 
+ grep -lr -e 'wordpress-382982-1202702.cloudwaysapps.com' * | xargs sed -i 's/wordpress-377238-1226894.cloudwaysapps.com/jessjenk.in/g'
+  
+
+Search and replace with in database.
+
+$ wp search-replace '<Live-App>' '<Staging-App>'
+wp search-replace 'aircoolmidlands.co.uk'  'http://wordpress-47250-1194625.cloudwaysapps.com/'  --dry-run
+
+
+1: wp search-replace 'techexplorations.com' 'learn.techexplorations.com'  --dry-run ( make dry run at first step )
+--network    ( use it multisite)
+1(a): wp search-replace 'techexplorations.com' 'learn.techexplorations.com'  --network  --dry-run
+2: wp cache flush
+3: purge varnish
+
+
+node js update
+
+Make sure this is set before you work with npm
+
+------------------------------
+
+cd  && echo "export PATH='$PATH:/home/master/bin/npm'" >> .bash_aliases
+cd ~ && echo "export NODE_PATH='$NODE_PATH:/home/master/bin/npm/lib/node_modules'" >> .bash_aliases
+npm config set prefix "/home/master/bin/npm/lib/node_modules"
+
+------------------------------
+
+
+
+----- Install NODE JS ----------
+Details: https://stackoverflow.com/questions/10075990/upgrading-node-js-to-latest-version
+--
+#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
+
+#cat ~/.bash_aliases
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+
+write the version you want to install
+#nvm install v12.14.0
+--
+---- Downgrade node version -------
+nvm install 10.0.0
+nvm ls
+nvm alias default 10.0.0
+
+
+
+now you can install any packages using npm
+npm install -g forever
+
+
+
+Wordpress site check
+
+https://www.isitwp.com/
+
+site is down or up 
+https://downforeveryoneorjustme.com/
+
+CPU Count
+#nproc --all
+
+
+
+
+Debian Security Tracker:
+https://security-tracker.debian.org/tracker/CVE-2019-9517
+
+
+
+Network Error: Software caused connection abort (  SFTP Error) 
+https://support.cloudways.com/whitelist-ips-for-ssh-sftp/?utm_source=Platformkb&utm_medium=kbsearch
+
+
+
+
+
+
+
+
+
+
+Elastic Mail:
+
+
+spam Issue:
+1: check for spf records  
+( Type: TXT Record
+Host/Name: @
+Value: v=spf1 MX include:_spf.elasticemail.com ~all
+) 
+2: check for dkim records ( https://help.elasticemail.com/en/articles/2303914-spf-dkim-and-tracking-faq )
+
+( 
+Sample DKIM Record:
+
+hostname: 20200221-vmmvx875._domainkey
+value:  v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCzq7uxLPGc07H1FJAn+klL0TkdaDzV6tYLhhpvf+hJ/hnl674yyJDo+mn4WN6C1veUz1gfWQo00By0awdsOsj/ZpzHgVHLjNTtt1D7QMUrUv0iBJUUEzwnL9FF715t/dNdMLtXlO3RRQoxXUfv28V5sPAevNoB2xsJsjiUpt8n3QIDAQAB
+
+
+
+Here is what you enter in those fields:
+Host/Name: api._domainkey
+Value: k=rsa;t=s;p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCbmGbQMzYeMvxwtNQoXN0waGYaciuKx8mtMh5czguT4EZlJXuCt6V+l56mmt3t68FEX5JJ0q4ijG71BGoFRkl87uJi7LrQt1ZZmZCvrEII0YO4mp8sDLXC8g1aUAoi8TJgxq2MJqCaMyj5kAm3Fdy2tzftPCV/lbdiJqmBnWKjtwIDAQAB
+
+
+)
+
+3: You also need to set the FROM address on your application setting:
+https://support.cloudways.com/set-from-address-from-the-cloudways-console/
+
+
+Memory Limit ( slow server ) 
+
+[Fri Feb 07 11:57:30.484370 2020] [proxy_fcgi:error] [pid 7065] [client 127.0.0.1:58586] AH01071: Got error 'PHP message: PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 65536 bytes) in /home/362980.cloudwaysapps.com/aqhucyfprh/public_html/wp-content/plugins/better-wp-security/core/modules/ban-users/settings.php on line 8\nPHP message: PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 65536 bytes) in Unknown on line 0\n'
+
+solution: increase php memory limit
+
+
+
+DOS attacks from any Single IP. 
+add that ip under .htaccess
+
+ # deny from 34.90.220.236
+
+
+How to check website Behind Cloudflare.
+https://securitytrails.com/domain/educatorhome.com/dns
+
+
+
+
+===================
+
+Email Migration:
+https://support.cloudways.com/submit-request/
+
+1) Your current email account and credentials to log in and the webmail URL.
+2) Old hosting login credentials
+3) Existing email service server information and determine what kind of service you have (POP, IMAP, or Exchange).
+
+
+Further details you can check here . https://support.cloudways.com/TXT Record Key:
+
+
+===========
+Git troubleshooting:
+
+UI can not push:
+master user can push to remote repo.
+
+Check for repo acces: 
+After the keys have been set up 
+
+# ssh -T git@bitbucket.org 
+
+If SSH key is not added to the remote repository on BitBucket, then a permission denied error will be thrown. 
+ssh key not added
+
+If your SSH key is set up to have read only access to a repository, and you try to push changes from your server to that repository, you will get an unauthorized error
+
+ unauthorized
+ fatal:  could not read from remote repository
+ 
+ 
+ SSL Certificate not working . pointing toward default sectigo certificate.
+ 
+	Remedy: Remove  the Primary Domain and Add it Again .
+ 
+ 
+ DataBase - Mysql 
+ 
+ show process list
+ mysql> SHOW [FULL] PROCESSLIST;
+ 
+ 
+ 
+ ========================================================================================================================================
+ SendGrid Mail setup
+ ======================
+ better to use account username and passwd
+ 
+ SPF Record Types
+ =============
+    1) set from address
+	2) v=spf1 include:sendgrid.net ~all
+    3)
+ 
+MX )      m1._domainkey.yourdomain.com. | MX | mx.sendgrid.net
+DKIM )   s1.domainkey.yourdomain.com. | TXT | k=rsa; t=s; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDPtW5iwpXVPiH5FzJ7Nrl8USzuY9zqqzjE0D1r04xDN6qwziDnmgcFNNfMewVKN2D1O+2J9N14hRprzByFwfQW76yojh54Xu3uSbQ3JP0A7k8o8GutRF8zbFUA8n0ZH2y0cIEjMliXY4W4LwPA7m4q0ObmvSjhd63O9d8z1XkUBwIDAQAB
+SPF )     s2.domainkey.yourdomain.com. | TXT | v=spf1 include:sendgrid.net ~all
+
+ 
+ ==========================================================================================================================================
+ 
+ 
+ ==========================         Mailgun ===============================
+ 
+ DKIM stands for DomainKeys Identified Mail  which was designed to help ISPs prevent malicious email senders by 
+ validating email from specific domains.
+ 
+ Mailgum SPF Record
+ 
+ v=spf1 include:mailgun.org ~all
+ 
+ 
+ 
+ Rackspace DKIM Reords ( will be genereated by Cloudways ) 
+ 
+ spf records
+ https://support.rackspace.com/how-to/set-up-dns-records-for-cloud-office-email/#mx-records
+ 
+ 
+ 
+ 
+ ============= check for system db performance =================
+ 
+ enable sql query cache logs
+ check php slow logs 
+ 
+ =================== ===========================
+ 
+ 
+ Office 365 , outlook , SMTP Settings:
+ =================================
+ 
+ spf : 
+ v=spf1 include:spf.protection.outlook.com -all
+ 
+ Link:  https://docs.microsoft.com/en-us/microsoft-365/security/office-365-security/how-office-365-uses-spf-to-prevent-spoofing?view=o365-worldwide
+ 
+ ++++++++++++++++++++++
+ Gmail SMTP
+ ============
+ We request you to enable the less secure apps option in order to get access your Gmail account via SMTP configuration:
+
+https://myaccount.google.com/lesssecureapps
+
+Moreover, if you have any 2FA enabled on Gmail you may need to disable it as well.
++++++++++++++++++++++++++++++++++++++++++++++++
+ ===============================================================
+ 
+ 
+ BackUp and Restore:
+ Local Backups  ( must be enabled ) to make local downloadable backups
+/home/master_user/applications/App_name/local_backups
+ duplicity file : that controls connection between server and s3: 
+ 
+ /root/.duplicity
+ 
+ After you restore your site you will see old-site folder under app home folder . 
+
+rollback  : bring back all data from old-site to public_html
+delete:    It will delete content inside old-site folder  without changing public_html.
+
+
+Disaster recovery  : 
+
+Backup is kep for 15 days ( after it has been deleted )   --- They are required to contact support asap to get the backup
+Disaster recovery can only be initiated when a Cloudways engineer impersonates as an administrator on the customer’s account. In this way, 
+all deleted servers and applications are visible on Platform. At any time, the admin can initiate a complete restore of the server, which creates a new server, 
+and restores all the applications and their data that are available in the latest backup. 
+
+
+scripts locations on server
+
+
+	/var/cw/scripts/bash/
+app_clone
+duplicity_backup
+duplicity_restore
+letsencrypt
+mysql_table_fix
+
+
+lock file when you run backup
+# ls -l /var/run/backup-appname.lock
+
+delete local backs : click delete icon 
+
+
+DNS Records Sample:
+
+Reverse Records :
+
+1.0.168.192.in-addr.arpa.  ( TTL )  	IN		PTR		server.example.com.
+
+A Record : 
+
+ example.com.		59 ( TTL )	IN		A		192.168..0.1
+
+CNAME;
+
+www		IN		A	example.com
+
+Or
+
+ www.example.com.		59  ( TTL )	IN		A		192.168..0.1
+ 
+ 
+ 
+ Staging server blog:
+
+ https://www.cloudways.com/blog/staging-sites/#website-staging
+ 
+ 
+ CORS Header .htaccess
+ Header set Access-Control-Allow-Origin "*"
+ Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+ 
+ 
+ 
+
+
+CORS Headers to be used : 
+
+    Header always set Access-Control-Max-Age 1728000
+    Header always set Access-Control-Allow-Origin: "*"
+    Header always set Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+    Header always set Access-Control-Allow-Headers: "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,C$
+    Header always set Access-Control-Allow-Credentials true
+	
+	
+	
+ 
+ 
+ 
+Lets Encrypt:
+rate limit 
+ Certificates per Registered Domain (50 per week)
+ 
+ 
+ https://letsencrypt.org/docs/rate-limits/
+ 
+ 
+
+
+Investigate  issues with any command
+# strace ls
+# strace wp plugin list
+
+
+
+Bulk Domain Lookup:
+
+https://www.infobyip.com/ipbulklookup.php
+
+
+
+mPDF error: Unable to create output file: /home/356009.cloudwaysapps.com/qtvjbywsss/public_html/retailsglobal/media/exportPdf/https://pluspointweb.unlockretail.com/_itemListPdf.pdf
+
+
+Try not to modify the source. Instead, revert back to fopen($file_out,'wb'); and make sure that folder permissions are set to 0777, like you did.
+
+Also, check if you're using the absolute path in order to write to a file, rather than using relative paths or even worse, URL.
+
+So,
+
+$file  = "/var/www/html/mywebsite/mypdfs/myfile.pdf";
+
+
+DNS Records: 
+
+Please create these two A records
+
+A record:
+
+Host:
+points to: < IP Adddress >
+TTL : leave it to default
+
+Host: www
+points to: < IP Adddress >
+TTL : leave it to default
+
+
+
+
+Magento Elastic Search:
+https://www.cloudways.com/blog/configuring-elasticsearch-magento/
+
+
+
+Redirect Loop: ( wordpress  )
+
+1: check for tech.
+2: check for CDN  ( cloudways or cloudflare etc)
+3: check for .htaccess
+4: check for site config 
+	wp: wp-config.php   or site settings
+	check for plugin issues. 
+	
+
+
+CPU Usage:   top b -n1 | head -17 | tail -11
+CPU Count: lscpu | grep -e "^CPU(s):" | cut -f2 -d: | awk '{print $1}'
+Load Average (5m):  uptime | awk -F'load average:' '{ print $2 }' | cut -f1 -d,
+Free Memory: free -g | head -2 | tail -1| awk '{print $2}'
+
+
+
+
+https://www.cloudways.com/blog/application-performance-monitoring/
+
+
+
+
+
+
+
+LMS Course NOTES:
+
+SSL Course:
+=========
+
+SSL issues:
+master user 
+home/master/applications/xvzyqcngbe
+#ls ssl ---> default certificates are placed here
+#ls conf/  -----> custom certificates files ( from lets encrypt ) 
+
+
+
+Wilcard Cert  or certbot 
+ls /etc/letsencrypt/
+csr  key   ( and private key )
+live / ( website ssl that are live )
+
+archieve  ( actual location of ssl cert files)
+ssl  () 
+acounts > authorized key pair
+
+#cat  renewal/qnzcebkkeu.com.conf
+
+
+
+ssl labs
+ssl shopper
+
+
+crontab
+46 11 7,14,21,28 * * /var/cw/scripts/bash/letsencrypt.sh -s qnzcebkkeu -d 30 #letsencrypt_qnzcebkkeu
+44 7 7,14,21,28 * * /var/cw/scripts/bash/letsencrypt.sh -s xvzyqcngbe -d 30 #letsencrypt_xvzyqcngbe
+
+==============================================================================
+
+
+
+
+Email:
+
+A Sender Policy Framework (SPF) record is a type of Domain Name System (DNS) record that can help to prevent email address forgery.  ( Only required If you want to stop email forgery ) 
+	*  Identifites which email servers are allowed to send email on behalf of your domain . 
+	*  The purpose of an SPF record is to detect and prevent spammers from sending messages with forged From addresses on your domain.
+	*  No one can send email using your email address . 
+	*  Normaly used with relaying server feature.
+	* format ( v=spf1 a mx ip4:69.64.153.131 include:_spf.google.com ~all )
+	SPF for Elastic Mail: 
+	Type: TXT Record
+	Host/Name: @
+	Value: v=spf1 MX include:_spf.elasticemail.com ~all
+
+
+SSL Certificates Types:
+
+ Subject Alternative Name or SAN certificates 
+ 
+ 
+    Wildcard: a wildcard certificate allows for unlimited subdomains to be protected with a single certificate. 
+	For example, you could use a wildcard certificate for the domain name opensrs.com and that cert would also work for mail.opensrs.com, ftp.opensrs.com and any other subdomain. 
+	The wildcard refers to the fact that the cert is provisioned for *.opensrs.com.
+    
+	SAN: a SAN cert allows for multiple domain names to be protected with a single certificate. 
+	For example, you could get a certificate for opensrs.com, and then add more SAN values to have the same certificate protect opensrs.org, opensrs.net and even tucows.com.
+
+	
+	
+
+Whois Information:
+
+ whois educatorhome.com | grep -A3  -B3 Registrar
+  dig NS  educatorhome.com
+
+
+
+Server Scalling Details:
+
+
+UpSteam:							CPU				Core				HDD Size				 DataBase				RAM
+Linode:  																	 78.79 GB											4GB
+
+
+
+Downscale  -- > need to clone the server with lower hardwarre details
+
+Clone Server:  
+	SSL will be removed
+	Domain Name will be removed - and will spawn with a default name 
+	This is treated as newly spawned server.
+	IP will be changed
+	LocaL Backups will be disabled , and Will not be saved on cloned server . Only 1 BAckUp is available 
+	Clone Time: 
+			min: 8 min
+			max: depends on server size ( specs ) 
+	
+	
+We can migrate emails from the old host to the new Cloudways host. Please note, the migration of the single email box cost $10. For the completion of this process we will need the following details :
+1) We need your current email account and credentials to log in and the webmail URL.
+2) Old hosting login credentials
+2) Existing email service server information and determine what kind of service you have (POP, IMAP, or Exchange
+
+https://support.cloudways.com/create-support-ticket/
+
+
+
+
+
+zoho mail spf records:
+
+ v=spf1 include:zoho.com ~all
+ 
+ MX Records:
+ 
+ @/ Blank/ Domain name   mx.zoho.com.     10
+ @/ Blank/ Domain name    mx2.zoho.com.    20
+ @/ Blank/ Domain name    mx3.zoho.com.   50
+ 
+
+Mailgun:
+
+smtp.mailgun.org
+ 587 (recommended)
+ username / password
+ 
+
+
+
+Server not scalable , 
+
+open from admin and uncheck 
+grey_size_limit set  Uncheck 
+
+
+
+Sendgrid API Key
+
+Username:     API Key ID: Nx0WmZjySkGHb1CLjVsbsQ 
+Password:     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
+
+
+
+Password:    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
+username: fYR2tC0QQxSY-7yW9chd5A
+
+
+
+
+
+##################   Too Many Redirectos ###############################
+Jhoomla:
+
+ look for capital letters in domain name  ( this is also cause of redirection )
+ SITE URL should be on https://   not on http:// 
+ 
+
+
+###################################################################
+
+
+
+
+Too Many Redirects ( wordpress )
+
+http://www.redirect-checker.org/index.php ( redirect checker )
+
+issue is due to wrong settings  with www and with out www
+
+    http://www.ggexample.com
+    http://ggexample.com
+	
+Solution:
+1) 	Check for settings and match the settings: ( Remove www from both )
+		Wordpress  Address URL 
+		Site Address ( URL ) 
+
+2)   wp-config.php  ( add or fix these two variables )
+	define(‘WP_HOME’,’https://cbdmagnoliatx.com/’);
+	define(‘WP_SITEURL’,’https://cbdmagnoliatx.com/’);
+
+Your site is facing with issue of ERR_TOO_MANY_REDIRECTS ,,,
+As Step1: You need to set up your site url and point it to https:// and remove all occurances of http:// , under the following locations ,,, Dashboard Settings .. database .. wp-config.php
+Clear  wp-cache folder 
+$wp cache clear
+$rm -rf /master/applications/xvzyqcngbe/public_html/wp-content/cache/*
+
+Redirect Error After Plugin Install
+ if error caused after installing any plugin ,  deactiviate the plugin better to delete it .
+ 
+ or Via FTP :
+ wp-content/plugins/  ( find the plugin and delete it ) 
+ 
+ Details: https://www.greengeeks.com/tutorials/article/how-to-solve-the-too-many-redirects-error-in-wordpress/
+ 
+ 
+
+
+WordPress Slow Uploads:
+
+Add after $table_prefix =
+define('FS_METHOD','direct');
+define('WPLANG', '');
+define('FS_CHMOD_DIR', (0775 & ~ umask()));
+define('FS_CHMOD_FILE', (0664 & ~ umask()));
+
+
+403 forbidden error :
+
+https://support.cloudways.com/block-direct-web-traffic-pointed-towards-servers-ip/?utm_source=Platformkb&utm_medium=kbsearch
+
+
+Send Test Email.
+
+ echo "This is a test." | mailx -s "Test"  asif.shabir@gmail.com
+ info@specialcase.es
+ 
+  echo "This is a test Mail from Cloudways." | mailx -s "Test Mails for Cloudways"  info@specialcase.es
+ 
+ servizioclienti@comilux.it
+ echo "This is a test mail from Cloudways" | mailx  -r  asif.shabir@gmail.com  -s "Test Mail from Cloudways"  asif.shabir@clouodways.com
+ 
+ echo "This is a test mail from Cloudways" | mailx  -r  info@pixify.net   -s "Test Mail from Cloudways"  parasshah195@gmail.com    ( force from address )
+ echo "This is a test." | mailx  -r info@stylegunner.com  -s "Test"  info@stylegunner.com    ( force from address )
+ 
+
+
+ 
+ Email Test page  php 
+ 
+ <?php 
+$to = "asif.shabir@gmail.com"; 
+$subject = "Test Mail from Cloudways"; 
+$txt = "Hello world!"; 
+mail($to,$subject,$txt,'From:  asif.shabbir@cloudways.com ','-f  asif.shabir@gmail.com'); 
+echo "Mail Sent";
+
+?>
+
+ 
+ tls testing 
+ tlv1  
+ https://www.cdn77.com/tls-test
+
+
+Disable WordPress plugins ( command line ) 
+
+home/master/applications/xvzyqcngbe/public_html
+
+wp plugin list
+wp plugin deactivate --all
+wp plugin activate --all
+
+
+################ non www to www redirect #############################################################
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^example.com [NC]
+RewriteRule ^(.*)$ https://www.example.com/$1 [L,R=301,NC]
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+###################################################################################################
+
+https://help.elasticemail.com/en/articles/2281323-how-to-verify-your-domain   ( spf , dkim , tracking )
+
+tailf hyrfepeveg/logs/nginx-app.status.log | grep xmlrpc
+
+cat  */logs/nginx-app.status.log | grep xmlrpc | wc -l
+
+xmlrpc errors 
+
+<Files xmlrpc.php>
+order deny,allow
+deny from all
+allow from 127.0.0.1
+</Files>
+
+
+
+https://blog.sucuri.net/2015/10/brute-force-amplification-attacks-against-wordpress-xmlrpc.html     ( xmlrpc  details ) 
+https://www.hostinger.com/tutorials/what-is-403-forbidden-error-and-how-to-fix-it    ( 403 error for wordpress ) 
+
+
+[master_mnbwfmvwte]:~$ tailf applications/vtkqsdzhur/logs/apache_wordpress-247810-919163.cloudwaysapps.com.access.log
+[master_mnbwfmvwte]:~$ tailf applications/vtkqsdzhur/logs/php-app.slow.log
+[master_mnbwfmvwte]:~$ cd applications/vtkqsdzhur/public_html/
+[master_mnbwfmvwte]:public_html$ wp cron event list
+
+
+
+
+
+https://www.beawelry.com/
+
+
+
+lets encrtyp 4th march certificate checker
+
+curl -XPOST -d 'fqdn=your-domain-name-here' https://unboundtest.com/caaproblem/checkhost
+https://www.cyberciti.biz/security/letsencrypt-is-revoking-certificates-on-march-4/
+
+
+
+
+
+Website down time checker 
+
+https://www.uptrends.com/tools/uptime
+
+
+
+
+
+
+
+
+
+Error:  Backup not working . unexpected error.  
+
+IN this case webfiles are backed up and db back will show errors.
+
+When you try to take backup  , it will give you this error.
+mysqldump: Error 2020: Got packet bigger than 'max_allowed_packet' bytes when dumping table `wp_options` at row: 645
+
+
+Solution:
+https://bobcares.com/blog/mysqldump-error-2020/
+https://stackoverflow.com/questions/8815445/mysqldump-error-got-packet-bigger-than-max-allowed-packet
+
+
+
+
+
+Timeone Convertor.
+https://savvytime.com/converter/utc-to-gmt
+
+
+Breeze Issue ( how to create ticket for breeze issue) 
+https://docs.google.com/document/d/1jHn5rd8QvL4rbZQtgXdhVezFI3ym8kDa0JK2z3PI3j0/edit
+
+
+
+Permission issue with wordpress
+define('WP_DEBUG', false);
+#define('WP_CONTENT_DIR', '/home/370689.cloudwaysapps.com/qmfbxmhymc/public_html/srv/htdocs/wp-content');
+define('WP_CONTENT_URL', 'http://wordpress-370689-1195151.cloudwaysapps.com/srv/htdocs/wp-content');
+#define('UPLOADS', 'srv/htdocs/wp-content/uploads');
+
+Are you seeing FTP details popup, Please correct me if I am wrong?
+
+
+
+DKIM checker
+
+
+https://www.mail-tester.com/spf-dkim-check
+
+
+
+Free online website scanner 
+
+https://scanner.pcrisk.com/
+
+
+Mandril:
+
+mandril txt record:
+
+v=spf1 include:spf.mandrillapp.com ?all
+
+mandril DKIM Record:
+v=DKIM1\; k=rsa\; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCrLHiExVd55zd/IQ/J/mRwSRMAocV/hMB3jXwaHH36d9NaVynQFYV8NaWi69c1veUtRzGt7yAioXqLj7Z4TeEUoOLgrKsn8YnckGs9i3B3tVFB+Ch/4mPhXWiNfNdynHWBcPcbJ8kjEQ2U8y78dHZj1YeRXXVvWob2OaKynO8/lQIDAQAB\;
+
+
+error 503:
+execution timeout try to increase it 
+
+
+If customer wants to use multi spf records
+Host/Name: @
+Value: v=spf1 include:emailsrvr.com include:_spf.elasticemail.com ~all
+
+
+
+Wordpress debug.log
+
+define('WP_DEBUG', true);
+define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_DISPLAY', false);
+define('WP_DEBUG_LOG', ABSPATH . '/home/master/applications/gmktbkftuy/public_html/wp-content/debug.log');
+
+
+
+
+Magento :
+
+Create magento 2 user:
+
+bin/magento admin:user:create --admin-user="cloudways" --admin-password="cloudways1" --admin-email="abc@xyz.com" --admin-firstname="cloudways" --admin-lastname="cloudways"
+
+
+Ticket must check :  Ticket #189730 ( URL Replacement )
+
+DNS record Type
+type =a 
+name = www
+IP =  167.71.228.37
+
+lets encrypt attemtps:
+5 failed  attempts for new domain  / day 
+5 per week
+
+coudways website not accessible
+
+https://docs.google.com/spreadsheets/d/1gJJi9XLEYDmRgwtInPNRkpaCBRRFdbBhXyemIFMPpE4/edit#gid=0
+
+
+
+Repair Database: ( does not work with master user ) ###   ONLY  ROOT USER   #######
+mysqlcheck -u root  --auto-repair --all-databases
+
+DNS checking websites:
+https://www.ultratools.com/tools/dnsLookupResult
+
+
+Backup now appearing / backup not working :
+
+"/home/95617-74103.cloudwaysapps.com/mnfeumhvjh/public_html/wp-includes/js/swfupload/.fa001fe5.ico"
+run htop on server
+wp_plugin list   ( check for this process )
+
+YOAST Plugin: 
+error:
+
+XML or text declaration not at start of entity
+Solution:
+
+It usually happens when some of us, or the customer leave any blank lines in the wp-config.php
+
+the cause most often is an empty line at the beginning (before the <?php line) or end of the wp-config.php or functions.php file
+
+
+
+
+ https://yoast.com/help/xml-sitemap-error/ 
+ 
+ 2nd step:
+ https://yoast.com/help/how-to-check-for-plugin-conflicts/
+ 
+ 
+ 
+ 
+ =========
+ If a customer ask which PHP client for Redis we have on Cloudways (predis or phpredis), you can verify it by running php7.3 -m | grep redis depending on php version running on server. To double check, use dpkg -l | grep redis command. Here's the output: http://i.imgur.com/x4HPSO9.png
+Note that phpredis package is shown as 'redis' when using php module command.
+In Wordpress, "Redis Object Cache" plugin also shows the PHP Redis client: http://i.imgur.com/LbKgABR.png
+
+ 
+ mac mac  email client
+ https://support.apple.com/guide/mail/change-server-settings-cpmlprefacctadv/mac
+ 
+ 
+ certbot renew --dry-run
+ wp search replaceft
+wp search-replace 'fusionchurch.cc' 'fusion.wphstaging.com' --dry-run --all-table
+
+
+procees named ./mh is  a malware if found using htop
+
+
+Error 503 on wordpress:  ( always check for logs) 
+First, We have disabled the plugin "Speaker" as it was generating error
+
+Second, WordPress allow few extensions by-default, There we have defined below parameter in Wp-config.php file to allow other file types as well:
+define('ALLOW_UNFILTERED_UPLOADS', true);
+
+
+
+Magento Optimization
+
+Reindexing
+
+ memory_limit
+ 
+ 
+ Image uploading website
+ https://pasteboard.co/
+ 
+ 
+ 
+ Ticket #186857  ( ticket to check )
+ Why chat is coming look for this 
+ 
+ 
+ restore problem:
+ 
+ retention is too less that might be causing issues 
+ 
+ 
+ check mails
+ 
+ postcat -q
+ 
+ 
+ to restore we need
+ deny from 81.17.20.10
+deny from 45.119.41.26
+
+
+cloudways: default - URL :
+
+db name:
+server IP:
+
+
+Check Cron jobs:
+cat /var/log/syslog.1 | grep zcwjpexuwj | grep CMD
+
+
+
+Elementar issues:
+check for php version mismtach
+check for plugin errors
+
+SendGrid:
+
+If customer is using Sendgrid as an SMTP in order to send his SMTP emails, please make sure that he has Sender Identity configured either through Single Sender Verification or Domain Authentication, you can find the details here:
+https://sendgrid.com/docs/for-developers/sending-email/sender-identity/
+Also, make sure to use the from address that you configured in the Single sender verification or Domain authentication in the application settings or the contact form settings,  otherwise you would get the following error:
+<soban.abid@cloudways.com>: host smtp.sendgrid.net[159.122.219.55] said: 550
+    The from address does not match a verified Sender Identity. Mail cannot be
+    sent until this error is resolved. Visit
+    https://sendgrid.com/docs/for-developers/sending-email/sender-identity/ to
+    see the Sender Identity requirements (in reply to end of DATA command)
+	
+	
+htaccess rules for redirecting to sub directory
+I have added below rules in .htaccess file for that:
+
+#for images.gift-mom.com >> /wp-content/uploads/
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^images.gift-mom.com [NC]
+RewriteRule ^(.*)$ https://gift-mom.com/wp-content/uploads/$1 [L,R=301,NC]
+
+#for static.gift-mom.com >> /wp-content/
+RewriteCond %{HTTP_HOST} ^static.gift-mom.com [NC]
+RewriteRule ^(.*)$ https://gift-mom.com/wp-content/$1 [L,R=301,NC]
+
+	
+
+
+Migrations MSA App.
+
+
+
+
+backend  fetch failed magento
+https://support.magento.com/hc/en-us/articles/360034631211
+
+
+
+============================
+=  Composer Memory limits error   =
+============================
+1) Solution 1  ( may not work in some cases)   When 
+"Composer internally increases the memory_limit to 1.5G."
+
+$>which composer
+/usr/local/bin/composer
+
+$>php -d memory_limit=512M /usr/local/bin/composer update
+...
+Solution 2:  should work in most of the cases
+===================================
+
+Set it to use umilimted memory 
+
+2) COMPOSER_MEMORY_LIMIT=-1 composer update 
+or 
+COMPOSER_MEMORY_LIMIT=-1 composer require mailchimp/mc-magento2
+
+Or increase swap size ( not recommended at cloudways)
+sudo fallocate -l 4G /swapfile
+sudo dd if=/dev/zero of=/swapfile bs=4096k count=1048
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+to make it permenant add this to /etc/fstab file, 
+/swapfile swap swap defaults 0 0
+
+3) 
+php composer.phar --self-update
+
+NodeJS:  
+Make it work in port 3000
+
+RewriteEngine On 
+RewriteBase / 
+RewriteRule ^(.*)?$ http://127.0.0.1:3000/$1 [P,L]
+
+
+
+
+
+ 
+ Web Page Speed Test:
+ https://www.webpagetest.org/
+ 
+ 
+ Optimize images, add expires headers and reduce the number of HTTP requests. You can use grouping to combine all CSS/JS files into single files.
+ 
+ Expiry Headers: ( Leverage browser caching) 
+ 
+ ## EXPIRES CACHING ##
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType text/css "access plus 1 month"
+ExpiresByType application/pdf "access plus 1 month"
+ExpiresByType text/x-javascript "access plus 1 month"
+ExpiresByType application/x-shockwave-flash "access plus 1 month"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresDefault "access plus 2 days"
+</IfModule>
+## EXPIRES CACHING ##
+
+ 
+ 
+ 
+ 
+
+ 
+PHP Warning: mysqli_query(): (00000/0):
+PHP Warning: Empty row packet body
+PHP Warning: mysqli_query(): MySQL server has gone away
+PHP Warning: Error while sending QUERY packet
+PHP Warning: mysqli_query(): (00000/0):
+
+adjust This parameter
+
+
+location ^~ /.well-known/acme-challenge/ {
+    auth_basic off;
+}
+
+
+Wordpress:
+
+wp Core not updating:
+##################
+
+/home/master/applications/cacddxzpjk/public_html
+
+# grep -e '$wp_db_version'  wp-includes/version.php 
+$wp_db_version = 47018
+
+connect with the site database and look for the value. 
+
+MariaDB [cacddxzpjk]> SELECT option_value FROM wp_options WHERE option_name = 'db_version';
++--------------+
+| option_value |
++--------------+
+| 38590        |
++--------------+
+1 row in set (0.00 sec)
+
+These two values must match. If they do not match change the value in the file  " wp-includes/version.php " , not in the database
+
+Check from command line:
+# wp core version
+#  wp core update
+
+###########################################################################################################
+
+
+Magento 
+
+bin/magento admin:user:create --admin-user="cloudways" --admin-password="cloudways1" --admin-email="abc@xyz.com" --admin-firstname="cloudways" --admin-lastname="cloudways"
+
+
+
+##################################3
+GRUNT Install
+
+npm insatll grunt@~1.0.1 grunt-autoprefixer@~3.0.4 grunt-banner@~0.6.0 grunt-continue@~0.1.0
+ grunt-contrib-clean@~1.1.0 grunt-contrib-connect@~1.0.2 grunt-contrib-cssmin@~2.2.1 
+ grunt-contrib-imagemin@~2.0.1 grunt-contrib-jasmine@~1.1.0 grunt-contrib-less@~1.4.1 
+ grunt-contrib-watch@~1.0.0 grunt-eslint@~20.1.0 grunt-exec@~3.0.0 grunt-jscs@~3.0.1 
+ grunt-replace@~1.0.1 grunt-styledocco@~0.3.0 grunt-template-jasmine-requirejs@~0.2.3 
+ grunt-text-replace@~0.4.0 morgan@~1.9.0 path@~0.12.7 serve-static@~1.13.1 squirejs@~0.2.1 strip-json-comments@~2.0.1
+ 
+ 
+ 
+ 
+Breeze:
+
+DELETE FROM `wp_options` WHERE `option_name` LIKE ('_transient_%');
+DELETE FROM `wp_options` WHERE `option_name` LIKE ('_site_transient_%');
+
+
+
+
+https://cloudways.uservoice.com/
+
+
+
+
+Magento
+
+documentroot/var/report
+Wheneven an error is generated a new file with the error number will be placed here\
+
+bin/magento cache:clean
+bin/magento cache:flush
+
+
+for D in *; do echo $D; find $D -type f| wc -l; done
+/home/387256.cloudwaysapps.com/stnhfbjabv/public_html/application/ci_sessions
+0 4 * * * find /home/43743-42406.cloudwaysapps.com/tpcnwvmenm/public_html/var/session/ -type f -mtime +30 -delete   > /dev/null 2>&1
+
+
+502 or 504 error with stackpath cdn
+##############################
+
+If a customer is getting 502 or 504 error in specific region on the stackpath CDN url 
+then you can enable the Origin IP resolution settings from stackpath console on the site settings.
+The bad gateway error may occur due to network issue, through enabling Origin IP Resolution, 
+the cdn url traces back to origin server IP and avoid such error
